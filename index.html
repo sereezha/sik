@@ -5,19 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sik</title>
-
-    <!-- Synchronous CSS -->
-    <!-- <link rel="stylesheet" href="./styles.css" /> -->
+    <meta name="description" content="ком'юніті людей, які люблять вино" />
 
     <link rel="icon" href="./favicon.ico" sizes="32x32">
     <link rel="icon" href="./favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="./favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="manifest" href="./site.webmanifest">
+    <link rel="preload" href="./img/hero-mobile.jpg" as="image" crossorigin media="(max-width: 538px)">
 
-    <meta name="description" content="ком'юніті людей, які люблять вино" />
-
-    <!-- Facebook OpenGraph, Twitter cards -->
     <meta property="og:title" content="Sik" />
     <meta property="og:description" content="ком'юніті людей, які люблять вино" />
     <meta property="og:image" content="https://gilded-douhua-4e133d.netlify.app/img/hero-desktop.jpg" />
@@ -30,9 +26,6 @@
     <meta name="twitter:image:alt" content="Пляшки натурального вина" />
     <link rel="canonical" href="https://gilded-douhua-4e133d.netlify.app/" />
 
-    <link rel="preload" href="./img/hero-mobile.jpg" as="image" crossorigin media="(max-width: 538px)">
-    <!-- <link rel="preload" href="./fonts/BudujSans-Black.woff2" as="font" type="font/woff2" crossorigin> -->
-    <!-- <link rel="preload" href="./fonts/BudujSans-Regular.woff2" as="font" type="font/woff2" crossorigin> -->
 
     <style>
       @font-face {
@@ -398,6 +391,15 @@
         justify-self: center;
         width: 56px;
         height: 32px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .footer {
+          height: 70vh;
+          display: grid;
+          align-items: end;
+          justify-items: end;
+        }
       }
 
       @media screen and (min-width: 539px) {
