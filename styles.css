@@ -1,0 +1,529 @@
+@font-face {
+  font-family: 'BudujSans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/BudujSans-Regular.woff2') format('woff2'),
+    url('./fonts/BudujSans-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BudujSans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/BudujSans-Medium.woff2') format('woff2'),
+    url('./fonts/BudujSans-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BudujSans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/BudujSans-Bold.woff2') format('woff2'),
+    url('./fonts/BudujSans-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BudujSans';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./fonts/BudujSans-Black.woff2') format('woff2'),
+    url('./fonts/BudujSans-Black.woff') format('woff');
+}
+
+:root {
+  --night-dark: #292428;
+  --evening-blue: #596b86;
+  --bloody-red: #be3834;
+  --tissue-biege: #e6ded1;
+  --natural-white: #fafafa;
+  --noble-pink: #310421;
+  --water-blue: #4756dc;
+  --calm-green: #258458;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--night-dark);
+  font-family: 'BudujSans', serif;
+  font-weight: 400;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+.wh-nowrap {
+  white-space: nowrap;
+}
+
+.title {
+  max-width: 700px;
+  width: 100%;
+  color: var(--natural-white, #fafafa);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+}
+
+.container {
+  --padding-inline: 16px;
+  --width: 1360px;
+
+  max-width: calc(var(--width) + var(--padding-inline) * 2);
+  padding: 0 var(--padding-inline);
+  margin: 0 auto;
+}
+
+.header {
+  padding: 24px 0;
+}
+
+.header-logo {
+  display: block;
+  max-width: 242px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-section {
+  margin-bottom: 96px;
+}
+
+.hero {
+  text-align: center;
+  color: var(--natural-white, #fafafa);
+  padding: 32px 16px 144px;
+  background: var(--evening-blue);
+  background-image: url('./img/hero-mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.hero__title {
+  margin-bottom: 16px;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.52px;
+}
+
+.hero__description {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.hero-form {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 32px;
+}
+
+.hero-form__inputs {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-form__input {
+  padding: 13px 24px 16px;
+  border-radius: 114px;
+  border: 1px solid var(--night-dark, #292428);
+  background: var(--noble-pink, #310421);
+  backdrop-filter: blur(32px);
+  color: var(--natural-white);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.21px;
+}
+
+.hero-form__input:focus {
+  outline: none;
+}
+
+.hero-form__input::placeholder {
+  color: rgba(250, 250, 250, 0.37);
+}
+
+.hero-form__button {
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 24px 32px;
+  border-radius: 112px;
+  background: var(--calm-green, #258458);
+  color: var(--natural-white, #fafafa);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.72px;
+  margin-bottom: 8px;
+}
+
+.telegram-link-wrapper {
+  --link-height: 32px;
+  display: flex;
+  justify-content: center;
+  margin-top: calc(var(--link-height) / 2 * -1);
+}
+
+.telegram-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--link-height);
+  padding: 2px 16px 3px;
+  border-radius: 60px;
+  background: var(--natural-white, #fafafa);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+  color: var(--water-blue, #4756dc);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.41;
+  text-decoration: none;
+}
+
+.benefits-section {
+  margin-bottom: 96px;
+}
+
+.benefits-title {
+  margin-bottom: 128px;
+}
+
+.benefits {
+  display: grid;
+  gap: 16px;
+}
+
+.benefits__item {
+  display: grid;
+  padding: 16px 16px 24px;
+  min-height: 480px;
+}
+
+.benefits__item--places {
+  color: var(--natural-white);
+  background-color: var(--evening-blue);
+}
+
+.benefits__item--bottle {
+  color: var(--noble-pink);
+  background-color: var(--bloody-red);
+}
+
+.benefits__item--lecture {
+  color: var(--water-blue);
+  background-color: var(--tissue-biege);
+}
+
+.benefits__number {
+  font-size: 144px;
+  letter-spacing: -1.44px;
+  font-weight: 900;
+  line-height: 1.11;
+}
+
+.benefits__img {
+  max-width: 296px;
+  margin-bottom: 30px;
+}
+
+.benefits__text {
+  margin-top: auto;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  font-weight: 500;
+}
+
+.about-section {
+  margin-bottom: 240px;
+}
+
+.about-wrapper {
+  display: grid;
+  gap: 24px;
+}
+
+.about-subscribe {
+  max-width: 328px;
+  height: 184px;
+  justify-self: end;
+}
+
+.about-subscribe svg {
+  width: 100%;
+}
+
+.footer {
+  padding-bottom: 80px;
+}
+
+.footer__wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__slogan {
+  text-align: center;
+  color: var(--natural-white, #fafafa);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.17;
+  letter-spacing: 0.34px;
+}
+
+.footer__logo {
+  display: block;
+  justify-self: center;
+  width: 56px;
+  height: 32px;
+}
+
+@media screen and (min-width: 539px) {
+  .hero {
+    background-image: url('./img/hero-desktop.jpg');
+  }
+
+  .benefits__img {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .benefits__item {
+    position: relative;
+  }
+
+  .benefits__img {
+    position: absolute;
+    right: 96px;
+    max-width: 10000px;
+  }
+
+  .benefits__item--places .benefits__img {
+    top: 105px;
+    width: 415px;
+  }
+
+  .benefits__item--bottle .benefits__img {
+    top: 129px;
+    width: 634px;
+  }
+
+  .benefits__item--lecture .benefits__img {
+    top: 138px;
+    width: 514px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    --padding-inline: 80px;
+  }
+
+  .title {
+    max-width: 989px;
+  }
+
+  .hero__title {
+    margin-bottom: 24px;
+    font-size: 128px;
+    line-height: 1.06;
+    letter-spacing: -1.28px;
+  }
+
+  .hero__description {
+    margin-bottom: 48px;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.37;
+    letter-spacing: -0.32px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.14;
+    letter-spacing: -0.56px;
+  }
+
+  .benefits {
+    display: grid;
+    gap: 24px;
+  }
+
+  .benefits-title {
+    margin-bottom: 240px;
+  }
+
+  .benefits__text {
+    max-width: 533px;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+  }
+
+  .about-wrapper {
+    display: grid;
+    gap: 48px;
+  }
+
+  .about-subscribe {
+    display: block;
+    max-width: 1000px;
+    width: 504px;
+    height: auto;
+  }
+
+  .footer {
+    padding-bottom: 56px;
+  }
+
+  .footer__wrapper {
+    gap: 24px;
+  }
+
+  .footer__slogan {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .benefits__item--places .benefits__img {
+    width: 515px;
+  }
+
+  .benefits__item--bottle .benefits__img {
+    width: 834px;
+  }
+
+  .benefits__item--lecture .benefits__img {
+    width: 614px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    --padding-inline: 120px;
+    --width: 1680px;
+  }
+
+  .title {
+    max-width: 1393px;
+    font-size: 72px;
+    line-height: 1.11;
+    letter-spacing: -0.72px;
+  }
+
+  .hero__title {
+    margin-bottom: 40px;
+  }
+
+  .hero__description {
+    max-width: 1100px;
+    margin-bottom: 56px;
+  }
+
+  .benefits__item--places .benefits__img {
+    top: 88px;
+    width: 573px;
+    height: 328px;
+  }
+
+  .benefits__item--bottle .benefits__img {
+    top: 106px;
+    width: 994px;
+    height: 291px;
+  }
+
+  .benefits__item--lecture .benefits__img {
+    top: 95px;
+    width: 848px;
+    height: 315px;
+  }
+}
