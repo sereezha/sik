@@ -641,10 +641,16 @@
             раз на місяць ви отримуєте пляшку або декілька, які підбирає Рома
             Ремеєв. кожен місяць <span class="wh-nowrap">щось нове 📦</span>
           </p>
-          <form action="/" class="hero__form hero-form">
+          <form novalidate class="hero__form hero-form">
             <div class="hero-form__inputs">
-              <input placeholder="ім'я" class="hero-form__input" type="text" />
               <input
+                id="name"
+                placeholder="ім'я"
+                class="hero-form__input"
+                type="text"
+              />
+              <input
+                id="phone"
                 placeholder="телефон"
                 class="hero-form__input"
                 type="tel"
@@ -1008,5 +1014,49 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      const tg = {
+        token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
+        chat_id: '187508671', // The user's(that you want to send a message) telegram chat id
+      };
+
+      /**
+       * By calling this function you can send message to a specific user()
+       * @param {String} the text to send
+       *
+       */
+      function sendMessage({ name, phone }) {
+        const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`; // The url to request
+
+        const obj = {
+          chat_id: tg.chat_id, // Telegram chat id
+          text: `
+<b>Ім'я</b>: ${name}
+<b>Телефон</b>: ${phone}
+          `, // The text to send
+        };
+
+        const xht = new XMLHttpRequest();
+        xht.open('POST', url, true);
+        xht.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+        xht.send(JSON.stringify(obj));
+      }
+
+      // Now you can send any text(even a form data) by calling sendMessage function.
+      // For example if you want to send the 'hello', you can call that function like this:
+
+      const form = document.querySelector('form');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.querySelector('#name').value;
+        const phone = document.querySelector('#phone').value;
+        if (!name || !phone) return;
+
+        sendMessage({ name, phone });
+      });
+    </script>
   </body>
 </html>
