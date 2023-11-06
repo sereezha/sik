@@ -424,6 +424,11 @@
         animation: smooth-appear 0.3s forwards;
       }
 
+      .about-subscribe--block {
+        animation: none;
+        opacity: 1;
+      }
+
       .about-subscribe svg {
         width: 100%;
       }
@@ -1107,10 +1112,11 @@
       const toast = initToast();
 
       const tg = {
-        token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
-        chat_id: '187508671',
+        token: '6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik',
+        chat_id: '-943321059',
         // 187508671
         // -1001494969756
+        // -943321059
         // 6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik
         // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
       };
@@ -1176,6 +1182,10 @@
       const target = document.querySelector('.about-subscribe');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+          if (entry.intersectionRatio === 1) {
+            target.classList.add('about-subscribe--block');
+            return;
+          }
           if (entry.isIntersecting) {
             target.classList.add('about-subscribe--show');
           }
