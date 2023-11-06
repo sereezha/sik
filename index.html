@@ -718,13 +718,13 @@
                 <input
                   id="name"
                   placeholder="ім'я"
-                  class="hero-form__input"
+                  class="hero-form__input js-hero-input"
                   type="text"
                 />
                 <input
                   id="phone"
                   placeholder="телефон"
-                  class="hero-form__input"
+                  class="hero-form__input js-hero-input"
                   type="tel"
                 />
               </div>
@@ -1069,6 +1069,15 @@
 
     <script>
       const PHONE_REGEX = /^\+?3?8?(0\d{9})$/;
+
+      const submitButton = document.querySelector('.js-hero-button');
+      const disableForm = () => {
+        submitButton.disabled = true;
+        document.querySelectorAll('.js-hero-input').forEach((el) => {
+          el.disabled = true;
+        });
+      };
+
       const initToast = () => {
         const append = (text, id) => {
           if (document.querySelector(`#${id}`)) {
@@ -1103,12 +1112,13 @@
       const toast = initToast();
 
       const tg = {
-        token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
-        chat_id: '-1001494969756',
+        token: '6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik',
+        chat_id: '-943321059',
         // 187508671
         // -1001494969756
+        // 6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik
+        // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
       };
-      const submitButton = document.querySelector('.js-hero-button');
       function sendMessage({ name, phone }) {
         const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`;
 
@@ -1126,6 +1136,7 @@
         xht.send(JSON.stringify(obj));
         submitButton.classList.add('is-success');
         submitButton.textContent = 'є! скоро вам напишемо';
+        disableForm();
       }
 
       const form = document.querySelector('form');
@@ -1135,7 +1146,6 @@
 
         const nameEl = document.querySelector('#name');
         const phoneEL = document.querySelector('#phone');
-
         nameEl.classList.remove('has-error');
         phoneEL.classList.remove('has-error');
 
