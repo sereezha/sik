@@ -23,18 +23,6 @@
     <link rel="manifest" href="./site.webmanifest" />
     <link
       rel="preload"
-      href="./img/hero-mobile.jpg"
-      as="image"
-      media="(max-width: 538px)"
-    />
-    <link
-      rel="preload"
-      href="./img/hero-desktop.jpg"
-      as="image"
-      media="(min-width: 539px)"
-    />
-    <link
-      rel="preload"
       href="./fonts/BudujSans-BoldHeight.woff2"
       as="font"
       type="font/woff2"
@@ -235,19 +223,13 @@
       }
 
       .first-screen {
-        margin-bottom: 56px;
+        margin-bottom: 8px;
         min-height: 100vh;
-        background-color: #42413c;
-        background-image: url('./img/hero-mobile.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 50% 50%;
       }
 
       .hero {
         text-align: center;
         color: var(--natural-white, #fafafa);
-        padding-bottom: 144px;
       }
 
       .hero__title {
@@ -286,7 +268,7 @@
         padding: 14px 24px 17px;
         border-radius: 114px;
         border: 1px solid transparent;
-        background: var(--night-dark, #292428);
+        background: var(--noble-pink, #310421);
         backdrop-filter: blur(32px);
         color: var(--natural-white);
         font-size: 21px;
@@ -472,10 +454,6 @@
       }
 
       @media screen and (min-width: 539px) {
-        .first-screen {
-          background-image: url('./img/hero-desktop.jpg');
-        }
-
         .benefits__img {
           max-width: 500px;
         }
@@ -514,10 +492,6 @@
           --width: 100%;
         }
 
-        .hero {
-          padding-bottom: 212px;
-        }
-
         .header {
           margin-bottom: 104px;
         }
@@ -532,10 +506,6 @@
 
         .title {
           max-width: 1035px;
-        }
-
-        .first-screen {
-          margin-bottom: 120px;
         }
 
         .hero__title {
