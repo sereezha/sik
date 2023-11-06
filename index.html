@@ -37,7 +37,8 @@
     <link
       rel="preload"
       href="./fonts/BudujSans-BoldHeight.woff2"
-      as="font" type="font/woff2"
+      as="font"
+      type="font/woff2"
     />
 
     <meta property="og:title" content="sik" />
@@ -1065,22 +1066,38 @@
       </div>
     </footer>
 
-    <div class="toast"></div>
+    <div class="toast-container"></div>
 
     <script>
       const PHONE_REGEX = /^\+?3?8?(0\d{9})$/;
       const initToast = () => {
-        const show = (text) => {
-          const toast = document.querySelector('.toast');
-          toast.textContent = text;
-          toast.classList.add('toast--show');
+        const append = (text, id) => {
+          if (document.querySelector(`#${id}`)) {
+            return;
+          }
+          const container = document.querySelector('.toast-container');
+          const toast = document.createElement('div');
+          Object.assign(toast, {
+            className: 'toast',
+            textContent: text,
+            id,
+          });
+
+          container.appendChild(toast);
+
+          setTimeout(() => {
+            toast.classList.add('toast--show');
+          }, 100);
           setTimeout(() => {
             toast.classList.remove('toast--show');
           }, 3000);
+          setTimeout(() => {
+            container.removeChild(toast);
+          }, 3350);
         };
 
         return {
-          show,
+          append,
         };
       };
 
@@ -1135,17 +1152,17 @@
         }
 
         if (!name.trim() && !phone.trim()) {
-          toast.show('заповніть поля, будь ласка');
+          toast.append('заповніть поля, будь ласка', 'all-fields');
           return;
         }
 
         if (!name.trim() || !phone.trim()) {
-          toast.show('заповніть усі поля, будь ласка');
+          toast.append('заповніть усі поля, будь ласка', 'some-fields');
           return;
         }
 
         if (phone.match(PHONE_REGEX) === null) {
-          toast.show('введіть реальний телефон, будь ласка');
+          toast.append('введіть реальний телефон, будь ласка', 'invalid-phone');
           return;
         }
 
