@@ -1,6 +1,6 @@
 Fonts
 # Add correct content-type for fonts
-AddType application/x-font-woff .woff
+AddType application/font-woff .woff
 AddType application/font-woff2 .woff2
 
 # Compress compressible fonts
@@ -10,5 +10,5 @@ AddType application/font-woff2 .woff2
 ExpiresActive on
 
 # Add a far future Expires header for fonts
-ExpiresByType application/x-font-woff "access plus 1 year"
+ExpiresByType application/font-woff "access plus 1 year"
 ExpiresByType application/font-woff2  "access plus 1 year"
