@@ -40,11 +40,9 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
       };
     }
 
-    const data = await response.json();
-
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify({message: 'success'}),
     };
   } catch (err) {
     return {
