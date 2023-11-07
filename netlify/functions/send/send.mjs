@@ -1,10 +1,9 @@
 import fetch from 'node-fetch';
 
 export const handler = async function (event, context) {
-  console.log(process.env);
   const tg = {
-    token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
-    chat_id: '187508671',
+    token: process.env.BOT_TOKEN,
+    chat_id: process.env.CHAT_ID,
     // 187508671
     // -1001494969756
     // -943321059
@@ -23,7 +22,7 @@ export const handler = async function (event, context) {
 <b>Ім'я</b>: ${name}
 <b>Телефон</b>: ${phone}
 ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
-    `,
+      `,
     };
 
     const response = await fetch(url, {
@@ -43,7 +42,7 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
 
     return {
       statusCode: 200,
-      body: JSON.stringify({message: 'success'}),
+      body: JSON.stringify({ message: 'success' }),
     };
   } catch (err) {
     return {
