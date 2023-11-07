@@ -1115,8 +1115,8 @@
       const toast = initToast();
 
       const tg = {
-        token: '6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik',
-        chat_id: '-943321059',
+        token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
+        chat_id: '187508671',
         // 187508671
         // -1001494969756
         // -943321059
@@ -1124,23 +1124,8 @@
         // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
       };
       function sendMessage({ name, phone }) {
-        const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`;
-
-        const obj = {
-          chat_id: tg.chat_id,
-          text: `
-<b>Ім'я</b>: ${name}
-<b>Телефон</b>: ${phone}
-          `,
-        };
-
-        const xht = new XMLHttpRequest();
-        xht.open('POST', url, true);
-        xht.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-        xht.send(JSON.stringify(obj));
-        submitButton.classList.add('is-success');
-        submitButton.textContent = 'є! скоро вам напишемо';
-        disableForm();
+        const url = `/.netlify/functions/todo?name=${name}&phone=${phone}`;
+        fetch(url);
       }
 
       const form = document.querySelector('form');
@@ -1180,6 +1165,9 @@
         }
 
         sendMessage({ name, phone });
+        submitButton.classList.add('is-success');
+        submitButton.textContent = 'є! скоро вам напишемо';
+        disableForm();
       });
 
       const target = document.querySelector('.about-subscribe');
