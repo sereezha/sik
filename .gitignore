@@ -3,3 +3,4 @@ styles.css
 index_full.html
 
 .netlify
+/node_modules
