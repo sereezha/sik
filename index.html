@@ -1124,7 +1124,7 @@
         // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
       };
       function sendMessage({ name, phone }) {
-        const url = `/.netlify/functions/index?name=${name}&phone=${phone}`;
+        const url = `/.netlify/functions/send?name=${name}&phone=${phone}`;
         fetch(url);
       }
 
