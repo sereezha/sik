@@ -43,6 +43,9 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'success' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
     };
   } catch (err) {
     return {
