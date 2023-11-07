@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+export const handler = async function (event, context) {
+  console.log(process.env);
   const tg = {
     token: '6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo',
     chat_id: '187508671',
