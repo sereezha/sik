@@ -25,17 +25,26 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
     `,
     };
 
-    fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: JSON.stringify(obj)
+      body: JSON.stringify(obj),
     });
+
+    if (!response.ok) {
+      return {
+        statusCode: 404,
+        body: response.statusText,
+      };
+    }
+
+    const data = await response.json();
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: name + ' ' + phone }),
+      body: JSON.stringify(data),
     };
   } catch (err) {
     return {
