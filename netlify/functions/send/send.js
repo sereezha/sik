@@ -1,4 +1,3 @@
-const axios = require('axios');
 
 exports.handler = async function (event, context) {
   const tg = {
@@ -25,10 +24,12 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
     `,
     };
 
-    axios.post(url, obj, {
+    fetch(url, {
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8'
       },
+      body: JSON.stringify(obj)
     });
 
     return {
