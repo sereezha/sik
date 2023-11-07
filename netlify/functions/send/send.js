@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 exports.handler = async function (event, context) {
   const tg = {
@@ -13,21 +14,26 @@ exports.handler = async function (event, context) {
   const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`;
 
   try {
-    const { name, phone } = event.queryStringParameters;
+    const { name, phone, telegram } = event.queryStringParameters;
 
     const obj = {
       chat_id: tg.chat_id,
       text: `
 <b>Ім'я</b>: ${name}
 <b>Телефон</b>: ${phone}
+${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
     `,
     };
-    const xht = new XMLHttpRequest();
-    xht.open('POST', url, true);
-    xht.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xht.send(JSON.stringify(obj));
+
+    axios.post(url, obj, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    });
+
     return {
       statusCode: 200,
+      body: JSON.stringify({ message: name + ' ' + phone }),
     };
   } catch (err) {
     return {
