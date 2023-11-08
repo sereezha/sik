@@ -19,6 +19,7 @@ export const handler = async function (event, context) {
   formData.append('Name', name);
   formData.append('Phone', phone);
   formData.append('Telegram', telegram);
+
   const obj = {
     chat_id: tg.chat_id,
     text: `
@@ -34,12 +35,13 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
       body: formData,
     }),
     fetch(
-      `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`, {
+      `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`,
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(obj),
       }
     ),
   ];
@@ -60,4 +62,11 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
         body: err.toString(),
       };
     });
+
+  return {
+    statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
 };
