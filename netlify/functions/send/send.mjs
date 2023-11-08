@@ -12,45 +12,38 @@ export const handler = async function (event, context) {
   };
 
   const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`;
+  const urlSheet = process.env.GOOGLE_SHEET;
+  const { name, phone, telegram } = event.queryStringParameters;
+  const formData = new FormData();
 
-  try {
-    const { name, phone, telegram } = event.queryStringParameters;
+  formData.append('Name', name);
+  formData.append('Phone', phone);
+  formData.append('Telegram', telegram);
 
-    const obj = {
-      chat_id: tg.chat_id,
-      text: `
-<b>Ім'я</b>: ${name}
-<b>Телефон</b>: ${phone}
-${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
-      `,
-    };
-
-    const response = await fetch(url, {
+  const promises = [
+    fetch(process.env.GOOGLE_SHEET, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: JSON.stringify(obj),
-    });
+      body: formData,
+    }),
+    fetch(
+      `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`
+    ),
+  ];
 
-    if (!response.ok) {
+  Promise.allSettled(promises)
+    .then(() => {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ message: 'success' }),
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      };
+    })
+    .catch((err) => {
       return {
         statusCode: 404,
-        body: response.statusText,
+        body: err.toString(),
       };
-    }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: 'success!' }),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-  } catch (err) {
-    return {
-      statusCode: 404,
-      body: err.toString(),
-    };
-  }
+    });
 };
