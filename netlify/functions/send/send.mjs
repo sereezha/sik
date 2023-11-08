@@ -19,6 +19,14 @@ export const handler = async function (event, context) {
   formData.append('Name', name);
   formData.append('Phone', phone);
   formData.append('Telegram', telegram);
+  const obj = {
+    chat_id: tg.chat_id,
+    text: `
+<b>Ім'я</b>: ${name}
+<b>Телефон</b>: ${phone}
+${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
+    `,
+  };
 
   const promises = [
     fetch(process.env.GOOGLE_SHEET, {
