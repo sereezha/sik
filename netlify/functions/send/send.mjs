@@ -26,7 +26,13 @@ export const handler = async function (event, context) {
       body: formData,
     }),
     fetch(
-      `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`
+      `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(obj)
+      }
     ),
   ];
 
