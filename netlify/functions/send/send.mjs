@@ -46,7 +46,7 @@ ${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
     ),
   ];
 
-  Promise.allSettled(promises)
+  await Promise.allSettled(promises)
     .then(() => {
       return {
         statusCode: 200,
