@@ -24,8 +24,8 @@ export const handler = async function (event, context) {
     text: `
 <b>Phone</b>: ${phone}
 ${telegram ? `<b>Telegram</b>: ${telegram}` : ''}
-<b>Bottles</b>: ${bottles},
-<b>Months</b>: ${months},
+<b>Bottles</b>: ${bottles}
+<b>Months</b>: ${months}
     `,
   };
 
