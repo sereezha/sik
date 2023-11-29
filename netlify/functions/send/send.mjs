@@ -11,21 +11,21 @@ export const handler = async function (event, context) {
     // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
   };
 
-  const url = `https://api.telegram.org/bot${tg.token}/sendMessage?parse_mode=html`;
-  const urlSheet = process.env.GOOGLE_SHEET;
-  const { name, phone, telegram } = event.queryStringParameters;
+  const { phone, telegram, bottles, months } = event.queryStringParameters;
   const formData = new FormData();
 
-  formData.append('Name', name);
   formData.append('Phone', phone);
   formData.append('Telegram', telegram);
+  formData.append('Bottles', bottles);
+  formData.append('Months', months);
 
   const obj = {
     chat_id: tg.chat_id,
     text: `
-<b>Ім'я</b>: ${name}
-<b>Телефон</b>: ${phone}
-${telegram ? `<b>Телеграм</b>: ${telegram}` : ''}
+<b>Phone</b>: ${phone}
+${telegram ? `<b>Telegram</b>: ${telegram}` : ''}
+<b>Bottles</b>: ${bottles},
+<b>Months</b>: ${months},
     `,
   };
 
