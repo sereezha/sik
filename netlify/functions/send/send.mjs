@@ -5,6 +5,7 @@ export const handler = async function (event, context) {
     token: process.env.BOT_TOKEN,
     chat_id: process.env.CHAT_ID,
   };
+  console.log(event)
 
   const { phone, telegram, bottles, months } = event.queryStringParameters;
   const formData = new FormData();
