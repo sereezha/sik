@@ -4,11 +4,6 @@ export const handler = async function (event, context) {
   const tg = {
     token: process.env.BOT_TOKEN,
     chat_id: process.env.CHAT_ID,
-    // 187508671
-    // -1001494969756
-    // -943321059
-    // 6788541003:AAFfj6hn8F14GeujafIfWGSr6QaIo-3esik
-    // 6840605880:AAHHLJZaYu5V5sAoEABGNL04Cy8PPqE9Odo
   };
 
   const { phone, telegram, bottles, months } = event.queryStringParameters;
