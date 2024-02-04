@@ -8,6 +8,10 @@ export const handler = async function (event, context) {
     };
 
     const { phone, telegram, bottles, months } = event.queryStringParameters;
+    if (!telegram || phone.trim() === '$' || !bottles || !months) {
+      throw new Error('error');
+    }
+
     const formData = new FormData();
 
     formData.append('Phone', phone);
